@@ -39,7 +39,7 @@ export default function Home() {
           <Box key={i} pb={"2em"} className={'avoidBreakPageInside'}>
             <Text>{group.pre}</Text>
             <Text as="h2" color="orange"><b><i>{group.Name}</i></b></Text>
-            <Text as="h3" color="orange" size="md" py={"0.2em"}><i>{group.Description}</i></Text>
+            <Text as="h3" color="orange" size="15px" py={"0.2em"}><i>{group.Description}</i></Text>
             <Box py={"1em"}>
               {products.map((product, i) => <ProductRow key={i} {...product} />)}
             </Box>
