@@ -11,6 +11,7 @@ export type GroupData = {
   Description: string
   pre: string
   post: string
+  page: number
 }
 
 export type ProductData = {
