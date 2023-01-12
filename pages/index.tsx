@@ -3,12 +3,12 @@ import { useEffect, useState } from "react"
 import { Data, ProductData } from "./api/data"
 
 const ProductRow = ({ PLU, Name, Allergies, Details, Description, Size, Price }: ProductData) => (
-  <Grid templateColumns='10% 1fr 10% 10%' gap={2} pb={"0.5em"} className={'avoidBreakPageInside'}>
+  <Grid templateColumns='10% 1fr 10% 10%' gap={2} className={'avoidBreakPageInside'}>
     <Text>{PLU}</Text>
     <Box>
       <Text as="b">{Name}</Text>{Allergies && ' '}<Text as='sup'>{Allergies}</Text>{Details && ' '}<Text as="i">{Details}</Text>
       <br />
-      <Text size="sm"><i>{Description}</i></Text>
+      <Text size="sm" whiteSpace="pre-line"><i>{Description}</i></Text>
     </Box>
     <Text>{Size}</Text>
     <Text>{Price}</Text>
@@ -32,11 +32,18 @@ export default function Home() {
   if (isLoading) return <p>Loading...</p>
   if (!data || !data.values) return <p>No data</p>
 
+  let page = 1
+
   return (
     <Box padding={"3em"}>
       {data.values.map(({ group, products }, i) => {
+        let addBreakBefore = ''
+        if (group.page !== page) {
+          page = group.page
+          addBreakBefore = 'breakPageBefore'
+        }
         return (
-          <Box key={i} pb={"2em"} className={'avoidBreakPageInside'}>
+          <Box key={i} pb={"2em"} className={`avoidBreakPageInside ${addBreakBefore}`}>
             <Text>{group.pre}</Text>
             <Text as="h2" color="orange"><b><i>{group.Name}</i></b></Text>
             <Text as="h3" color="orange" size="13px" py={"0.2em"}><i>{group.Description}</i></Text>
