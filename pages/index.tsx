@@ -1,59 +1,10 @@
-import { Box, Grid, Text } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { Data, ProductData } from "./api/data"
-
-const ProductRow = ({ PLU, Name, Allergies, Details, Description, Size, Price }: ProductData) => (
-  <Grid templateColumns='10% 1fr 10% 10%' gap={2} className={'avoidBreakPageInside'}>
-    <Text>{PLU}</Text>
-    <Box>
-      <Text as="b">{Name}</Text>{Allergies && ' '}<Text as='sup'>{Allergies}</Text>{Details && ' '}<Text as="i">{Details}</Text>
-      <br />
-      <Text size="sm" whiteSpace="pre-line"><i>{Description}</i></Text>
-    </Box>
-    <Text>{Size}</Text>
-    <Text>{Price}</Text>
-  </Grid>
-)
+import { Box } from "@chakra-ui/react";
+import { Main } from "../components/Main";
 
 export default function Home() {
-  const [data, setData] = useState<Data>()
-  const [isLoading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    fetch('/api/data')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-
-  if (isLoading) return <p>Loading...</p>
-  if (!data || !data.values) return <p>No data</p>
-
-  let page = 1
-
   return (
     <Box padding={"3em"}>
-      {data.values.map(({ group, products }, i) => {
-        let addBreakBefore = ''
-        if (group.page !== page) {
-          page = group.page
-          addBreakBefore = 'breakPageBefore'
-        }
-        return (
-          <Box key={i} pb={"2em"} className={`avoidBreakPageInside ${addBreakBefore}`}>
-            <Text>{group.pre}</Text>
-            <Text as="h2" color="orange"><b><i>{group.Name}</i></b></Text>
-            <Text as="h3" color="orange" size="13px" py={"0.2em"}><i>{group.Description}</i></Text>
-            <Box py={"1em"}>
-              {products.map((product, i) => <ProductRow key={i} {...product} />)}
-            </Box>
-            <Text align={"center"} size="md"><b><i>{group.post}</i></b></Text>
-          </Box>
-        )
-      })}
+      <Main />
     </Box>
-  )
+  );
 }
