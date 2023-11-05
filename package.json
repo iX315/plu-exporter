@@ -12,8 +12,12 @@
     "@chakra-ui/react": "^2.3.6",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@types/qrcode": "^1.5.4",
     "framer-motion": "^7.6.1",
+    "googleapis": "^128.0.0",
     "next": "13.0.0",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
