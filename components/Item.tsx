@@ -1,14 +1,17 @@
 import { Box, Text } from "@chakra-ui/react";
 import { MenuData } from "../types";
 import { ProductRow } from "./ProductRow";
+import { MutableRefObject } from "react";
 
-let page = 1;
-
-export const Item = ({ group, products }: MenuData) => {
+export const Item = ({
+  pageRef,
+  group,
+  products,
+}: MenuData & { pageRef: MutableRefObject<number> }) => {
   let addBreakBefore = "";
 
-  if (group.page !== page) {
-    page = group.page;
+  if (group.page !== pageRef.current) {
+    pageRef.current = group.page;
     addBreakBefore = "breakPageBefore";
   }
 

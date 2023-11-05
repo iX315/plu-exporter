@@ -19,7 +19,7 @@ export type ProductData = {
   Details: string;
   Description: string;
   Size: string;
-  Price: number;
+  Price: string;
   Page: number;
 };
 
