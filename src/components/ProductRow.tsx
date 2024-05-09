@@ -1,5 +1,6 @@
-import { Box, Grid, Text } from "@chakra-ui/react";
-import { ProductData } from "../types";
+"use client"
+import { Box, Grid, Text } from "@chakra-ui/react"
+import { ProductData } from "../types"
 
 export const ProductRow = ({
   PLU,
@@ -30,4 +31,4 @@ export const ProductRow = ({
     <Text>{Size}</Text>
     <Text>{Price}</Text>
   </Grid>
-);
+)
