@@ -1,5 +1,5 @@
 "use server"
-import { isCorrectSecret, isProd } from "../../../utils/env"
+import { isCorrectSecret, isProd } from "@/utils"
 import { NextResponse } from "next/server"
 
 const handler = async (req: Request) => {

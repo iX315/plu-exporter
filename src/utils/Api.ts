@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises"
 import { google } from "googleapis"
-import { GroupData, ProductData } from "../types"
+import { GroupData, ProductData } from "@/types"
 
 // tmp folder is the only writable folder in vercel
 const keyFilePath = "./tmp/credentials.json"

@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { ReactNode } from "react"
 
-import "../styles/globals.css"
+import "@/styles/globals.css"
 
 type Props = {
   children: ReactNode

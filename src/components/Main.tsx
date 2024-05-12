@@ -2,12 +2,16 @@
 import { SkeletonText } from "@chakra-ui/react"
 import { useRef } from "react"
 
-import { Item } from "./Item"
-import { useApiData } from "../hooks/useApiData"
+import { Item } from "./"
+import { Data } from "@/types"
 
-export const Main = () => {
+export interface MainProps {
+  data?: Data
+  isLoading: boolean
+}
+
+export const Main = ({ data, isLoading }: MainProps) => {
   const page = useRef(1)
-  const { data, isLoading } = useApiData()
 
   return (
     <>

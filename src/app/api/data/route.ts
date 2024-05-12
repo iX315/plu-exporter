@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server"
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { GroupData, MenuData, ProductData } from "../../../types"
-import { GoogleSheetsApiCall, parseGroup, parseProduct } from "../../../utils/Api"
+import { GroupData, MenuData, ProductData } from "@/types"
+import { GoogleSheetsApiCall, parseGroup, parseProduct } from "@/utils"
 
 export async function GET() {
   const menuApiResponse = await GoogleSheetsApiCall()
