@@ -1,17 +1,13 @@
 import { Box } from "@chakra-ui/react"
 import { Main } from "@/components"
-
-async function getData() {
-  const res = await fetch("/api/data")
-  return res.json()
-}
+import { GetMenuData } from "../utils"
 
 export default async function Home() {
-  const data = await getData()
+  const values = await GetMenuData()
 
   return (
     <Box padding={"3em"}>
-      <Main data={data} isLoading={!data} />
+      <Main data={{values}} isLoading={!values} />
     </Box>
   )
 }

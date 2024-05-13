@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "fs/promises"
 import { google } from "googleapis"
-import { GroupData, ProductData } from "@/types"
+import { GroupData, MenuData, ProductData } from "@/types"
 
 // tmp folder is the only writable folder in vercel
 const keyFilePath = "./tmp/credentials.json"
@@ -81,4 +81,25 @@ export const GoogleSheetsApiCall = async ({
   writeFile(cacheDataPath, JSON.stringify(response.data.values))
 
   return response.data.values
+}
+
+export const GetMenuData = async () => {
+  const menuApiResponse = await GoogleSheetsApiCall()
+  const groupsApiResponse = await GoogleSheetsApiCall({ sheetName: "Groups" })
+  const arraysAreValid =
+    Array.isArray(menuApiResponse) && Array.isArray(groupsApiResponse)
+
+  const products: ProductData[] = menuApiResponse.map(parseProduct)
+  const groups: GroupData[] = groupsApiResponse.map(parseGroup)
+
+  if (arraysAreValid) {
+    const menuData: MenuData[] = groups.map((group) => ({
+      group,
+      products: products.filter((product) => product.Group === group.Name),
+    }))
+
+    return menuData
+  } else {
+    return []
+  }
 }
