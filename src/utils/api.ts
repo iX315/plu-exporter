@@ -1,9 +1,10 @@
 import { readFile, writeFile } from "fs/promises"
 import { google } from "googleapis"
 import { GroupData, MenuData, ProductData } from "@/types"
+import path from "path"
 
 // tmp folder is the only writable folder in vercel
-const keyFilePath = `${process.cwd()}/tmp/credentials.json`
+const keyFilePath = path.join(process.cwd(), '/tmp/credentials.json')
 
 export const parseProduct = (product: string[]) =>
   ({
@@ -47,14 +48,14 @@ export const GoogleSheetsApiCall = async ({
   startRange = "A2",
   endRange = "Z14989",
 } = {}) => {
-  const cacheDataPath = `${process.cwd()}/tmp/cache/${sheetName}${startRange}${endRange}.json`
+  const cacheDataPath = path.join(process.cwd(), `/tmp/cache/${sheetName}${startRange}${endRange}.json`)
 
   // return cached data from file
   try {
     const data = await readFile(cacheDataPath)
     return JSON.parse(data.toString())
   } catch (error) {
-    console.log("No cache data found")
+    console.log("GoogleSheetsApiCall: No cache data found")
   }
 
   const keyCreated = await createTempKeyFile()
