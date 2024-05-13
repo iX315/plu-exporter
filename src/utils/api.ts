@@ -3,7 +3,7 @@ import { google } from "googleapis"
 import { GroupData, MenuData, ProductData } from "@/types"
 
 // tmp folder is the only writable folder in vercel
-const keyFilePath = "./tmp/credentials.json"
+const keyFilePath = `${process.cwd()}/tmp/credentials.json`
 
 export const parseProduct = (product: string[]) =>
   ({
@@ -46,7 +46,7 @@ export const GoogleSheetsApiCall = async ({
   startRange = "A2",
   endRange = "Z14989",
 } = {}) => {
-  const cacheDataPath = `./tmp/cache/${sheetName}${startRange}${endRange}.json`
+  const cacheDataPath = `${process.cwd()}/tmp/cache/${sheetName}${startRange}${endRange}.json`
 
   // return cached data from file
   try {
