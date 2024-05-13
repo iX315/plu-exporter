@@ -13,18 +13,17 @@ export interface MainProps {
 export const Main = ({ data, isLoading }: MainProps) => {
   const page = useRef(1)
 
+  if (isLoading) {
+    return <SkeletonText noOfLines={5} spacing={4} isLoaded={!isLoading} />
+  }
+
+  if (!data || !data.values) return <p>No data</p>
+
   return (
     <>
-      {isLoading ? (
-        <SkeletonText noOfLines={5} spacing={4} isLoaded={!isLoading} />
-      ) : !data || !data.values ? (
-        <p>No data</p>
-      ) : (
-        data &&
-        data.values.map((value, i) => (
-          <Item key={i} {...value} pageRef={page} />
-        ))
-      )}
+      {data.values.map((value, i) => (
+        <Item key={i} {...value} pageRef={page} />
+      ))}
     </>
   )
 }
