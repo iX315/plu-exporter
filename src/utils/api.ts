@@ -36,7 +36,8 @@ const createTempKeyFile = async () => {
   try {
     await writeFile(keyFilePath, data)
     return true
-  } catch {
+  } catch (err) {
+    console.error(err)
     return false
   }
 }
