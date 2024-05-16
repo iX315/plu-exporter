@@ -1,13 +1,11 @@
-import { Box } from "@chakra-ui/react"
-import { Main } from "@/components"
-import { GetMenuData } from "../utils"
+import { Box, Container, Text } from "@chakra-ui/react"
 
 export default async function Home() {
-  const values = await GetMenuData()
-
   return (
-    <Box padding={"3em"}>
-      <Main data={{values}} isLoading={!values} />
+    <Box mr={['0px','300px']}>
+      <Box mx={'auto'} p={"3em"} maxW={'980px'} bgColor={"#f3f3f3"}>
+        <Text as={'h1'} fontSize={"3xl"}>SiteName</Text>
+      </Box>
     </Box>
   )
 }

@@ -1,9 +1,9 @@
 "use server"
 import { NextResponse } from "next/server"
-import { GetMenuData } from "@/utils"
+import { getMenuData } from "@/utils"
 
 export async function GET() {
-  const values = await GetMenuData()
+  const values = await getMenuData()
 
   if (values.length > 0) {
     return NextResponse.json({ values }, { status: 200 })
