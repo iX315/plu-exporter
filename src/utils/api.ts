@@ -1,14 +1,20 @@
 import { google } from "googleapis"
-import { MenuData } from "@/types"
-import { parseGroup, parseProduct } from "./parsers"
 
 const getCredentials = () => JSON.parse(Buffer.from(process.env.CREDENTIALS ?? "", "base64").toString())
+
+interface GoogleSheetsApiCallProps {
+  sheetName?: string
+  startRange?: string
+  endRange?: string
+  mapperFn?: (data: string[]) => any
+}
 
 export const GoogleSheetsApiCall = async ({
   sheetName = "Menu",
   startRange = "A2",
   endRange = "Z14989",
-} = {}) => {
+  mapperFn = undefined,
+}: GoogleSheetsApiCallProps = {}) => {
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     credentials: getCredentials(),
@@ -25,31 +31,7 @@ export const GoogleSheetsApiCall = async ({
     majorDimension: "ROWS",
   })
 
-  return response.data.values ?? []
-}
-
-export const getMenu = async () => {
-  const menuApiResponse = await GoogleSheetsApiCall()
-  return menuApiResponse.map(parseProduct)
-}
-
-export const getGroups = async () => {
-  const groupsApiResponse = await GoogleSheetsApiCall({ sheetName: "Groups" })
-  return groupsApiResponse.map(parseGroup)
-}
-
-export const getMenuData = async () => {
-  const products = await getMenu() ?? []
-  const groups = await getGroups() ?? []
-
-  if (Array.isArray(products) && Array.isArray(groups)) {
-    const menuData: MenuData[] = groups.map((group) => ({
-      group,
-      products: products.filter((product) => product.Group === group.Name),
-    }))
-
-    return menuData
-  } else {
-    return []
-  }
+  return mapperFn
+    ? response.data.values?.map(mapperFn) ?? []
+    : response.data.values ?? []
 }

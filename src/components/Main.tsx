@@ -3,10 +3,12 @@ import { SkeletonText } from "@chakra-ui/react"
 import { useRef } from "react"
 
 import { Item } from "./"
-import { Data } from "@/types"
+import { MenuData } from "@/models/MenuData"
 
 export interface MainProps {
-  data?: Data
+  data?: {
+    values: MenuData[]
+  }
   isLoading: boolean
 }
 
