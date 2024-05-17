@@ -1,4 +1,5 @@
 import { google } from "googleapis"
+import {cache } from 'react'
 
 const getCredentials = () => JSON.parse(Buffer.from(process.env.CREDENTIALS ?? "", "base64").toString())
 
@@ -9,7 +10,7 @@ interface GoogleSheetsApiCallProps {
   mapperFn?: (data: string[]) => any
 }
 
-export const GoogleSheetsApiCall = async <T = string[]>({
+export const GoogleSheetsApiCall = cache(async <T = string[]>({
   sheetName = "Menu",
   startRange = "A2",
   endRange = "Z14989",
@@ -36,4 +37,4 @@ export const GoogleSheetsApiCall = async <T = string[]>({
     : response.data.values ?? []
 
   return data as T
-}
+})
