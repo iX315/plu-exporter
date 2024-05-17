@@ -1,6 +1,6 @@
 "use client"
 import { Box, Grid, Text } from "@chakra-ui/react"
-import { ProductData } from "@/types"
+import { ProductData } from "@/models/Product"
 
 export const ProductRow = ({
   PLU,

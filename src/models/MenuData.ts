@@ -7,8 +7,8 @@ export type MenuData = {
 }
 
 export const defaultMenuData: MenuData = {
-    group: defaultGroupData,
-    products: [],
+  group: defaultGroupData,
+  products: [],
 }
 
 export const getMenuData = async () => {
@@ -16,13 +16,11 @@ export const getMenuData = async () => {
   const groups = await getGroupsData()
 
   if (Array.isArray(products) && Array.isArray(groups)) {
-    const menuData: MenuData[] = groups.map((group) => ({
+    return groups.map((group) => ({
       group,
       products: products.filter((product) => product.Group === group.Name),
     }))
-
-    return menuData
   } else {
-    return []
+    return [defaultMenuData]
   }
 }

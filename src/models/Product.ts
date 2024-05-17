@@ -39,6 +39,6 @@ export const parseProduct = (product: string[]) =>
   }) as ProductData
 
 export const getProductData = async () =>
-  await GoogleSheetsApiCall<PageData[]>({ mapperFn: parseProduct })
+  await GoogleSheetsApiCall<ProductData[]>({ mapperFn: parseProduct })
 
 

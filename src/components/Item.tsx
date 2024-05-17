@@ -1,6 +1,6 @@
 "use client"
 import { Box, Text } from "@chakra-ui/react"
-import { MenuData } from "@/types"
+import { MenuData } from "@/models/MenuData"
 import { ProductRow } from "./"
 import { MutableRefObject } from "react"
 
