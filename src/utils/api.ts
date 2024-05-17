@@ -9,7 +9,7 @@ interface GoogleSheetsApiCallProps {
   mapperFn?: (data: string[]) => any
 }
 
-export const GoogleSheetsApiCall = async ({
+export const GoogleSheetsApiCall = async <T = string[]>({
   sheetName = "Menu",
   startRange = "A2",
   endRange = "Z14989",
@@ -31,7 +31,9 @@ export const GoogleSheetsApiCall = async ({
     majorDimension: "ROWS",
   })
 
-  return mapperFn
+  const data = mapperFn
     ? response.data.values?.map(mapperFn) ?? []
     : response.data.values ?? []
+
+  return data as T
 }

@@ -2,7 +2,7 @@ import { Box, Text } from "@chakra-ui/react"
 import { getPagesData } from "@/models/Page"
 
 export default async function Home() {
-  const values = (await getPagesData()).find((page) => page.Id === "Root")
+  const values = (await getPagesData()).find(({Id}) => Id === "Root")
 
   if (!values) return <Box>500...</Box>
 

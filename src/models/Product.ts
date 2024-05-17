@@ -1,4 +1,5 @@
 import { GoogleSheetsApiCall } from "@/utils"
+import { PageData } from "./Page"
 
 export type ProductData = {
   PLU: number | null
@@ -10,6 +11,18 @@ export type ProductData = {
   Size: string
   Price: string
   Page: number
+}
+
+export const defaultProductData: ProductData = {
+  PLU: null,
+  Group: "",
+  Name: "",
+  Allergies: "",
+  Details: "",
+  Description: "",
+  Size: "",
+  Price: "",
+  Page: 0,
 }
 
 export const parseProduct = (product: string[]) =>
@@ -26,6 +39,6 @@ export const parseProduct = (product: string[]) =>
   }) as ProductData
 
 export const getProductData = async () =>
-  await GoogleSheetsApiCall({ mapperFn: parseProduct })
+  await GoogleSheetsApiCall<PageData[]>({ mapperFn: parseProduct })
 
 

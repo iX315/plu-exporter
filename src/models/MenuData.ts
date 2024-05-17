@@ -1,9 +1,14 @@
-import { GroupData, getGroupsData } from "./Group"
+import { GroupData, defaultGroupData, getGroupsData } from "./Group"
 import { ProductData, getProductData } from "./Product"
 
 export type MenuData = {
   group: GroupData
   products: ProductData[]
+}
+
+export const defaultMenuData: MenuData = {
+    group: defaultGroupData,
+    products: [],
 }
 
 export const getMenuData = async () => {

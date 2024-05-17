@@ -8,6 +8,14 @@ export type GroupData = {
   page: number
 }
 
+export const defaultGroupData: GroupData = {
+  Name: "",
+  Description: "",
+  pre: "",
+  post: "",
+  page: 0,
+}
+
 export const parseGroup = (group: string[]) =>
   ({
     Name: group[0],
@@ -18,4 +26,4 @@ export const parseGroup = (group: string[]) =>
   }) as GroupData
 
 export const getGroupsData = async () =>
-  await GoogleSheetsApiCall({ sheetName: "Groups", mapperFn: parseGroup })
+  await GoogleSheetsApiCall<GroupData[]>({ sheetName: "Groups", mapperFn: parseGroup })

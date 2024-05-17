@@ -8,6 +8,14 @@ export type PageData = {
   Logo: string
 }
 
+export const defaultPageData: PageData = {
+    Id: "",
+    Name: "",
+    Description: "",
+    Image: "",
+    Logo: "",
+}
+
 export const parsePage = (page: string[]) =>
   ({
     Id: page[0],
@@ -18,4 +26,4 @@ export const parsePage = (page: string[]) =>
   }) as PageData
 
 export const getPagesData = async () =>
-  await GoogleSheetsApiCall({ sheetName: "Pages", mapperFn: parsePage })
+  await GoogleSheetsApiCall<PageData[]>({ sheetName: "Pages", mapperFn: parsePage })
