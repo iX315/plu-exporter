@@ -1,5 +1,6 @@
 import { google } from "googleapis"
-import {cache } from 'react'
+import { defaultComposer } from "default-composer"
+import { cache } from "react"
 
 const getCredentials = () => JSON.parse(Buffer.from(process.env.CREDENTIALS ?? "", "base64").toString())
 
@@ -7,34 +8,44 @@ interface GoogleSheetsApiCallProps {
   sheetName?: string
   startRange?: string
   endRange?: string
-  mapperFn?: (data: string[]) => any
+  defaultData?: any
 }
 
-export const GoogleSheetsApiCall = cache(async <T = string[]>({
-  sheetName = "Menu",
-  startRange = "A2",
-  endRange = "Z14989",
-  mapperFn = undefined,
-}: GoogleSheetsApiCallProps = {}) => {
-  const auth = await google.auth.getClient({
-    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
-    credentials: getCredentials(),
-  })
+export const googleSheetsApiCall = cache(
+  async <T = string[]>({
+    sheetName = "",
+    startRange = "A1",
+    endRange = "Z14989",
+    defaultData = {} as T,
+  }: GoogleSheetsApiCallProps = {}) => {
+    const auth = await google.auth.getClient({
+      scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+      credentials: getCredentials(),
+    })
 
-  const sheets = google.sheets({ version: "v4", auth })
+    const sheets = google.sheets({ version: "v4", auth })
 
-  // TODO fixed cells values are not really smart
-  const range = `${sheetName}!${startRange}:${endRange}`
+    // TODO fixed cells values are not really smart
+    const range = `${sheetName}!${startRange}:${endRange}`
 
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.SHEET_ID,
-    range,
-    majorDimension: "ROWS",
-  })
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SHEET_ID,
+      range,
+      majorDimension: "ROWS",
+    })
 
-  const data = mapperFn
-    ? response.data.values?.map(mapperFn) ?? []
-    : response.data.values ?? []
+    const header = response.data.values?.shift() ?? []
+    const values = response.data.values ?? []
 
-  return data as T
-})
+    const data = values.map((row) =>
+      defaultComposer(
+        defaultData,
+        ...row.map((value, index) => ({
+          [`${header[index] ?? ""}`.toLowerCase()]: value,
+        })),
+      ),
+    )
+
+    return data as T
+  },
+)

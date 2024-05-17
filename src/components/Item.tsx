@@ -21,11 +21,11 @@ export const Item = ({
       <Text>{group.pre}</Text>
       <Text as="h2" color="orange">
         <b>
-          <i>{group.Name}</i>
+          <i>{group.name}</i>
         </b>
       </Text>
       <Text as="h3" color="orange" size="13px" py={"0.2em"}>
-        <i>{group.Description}</i>
+        <i>{group.description}</i>
       </Text>
       <Box py={"1em"}>
         {products.map((product, i) => (

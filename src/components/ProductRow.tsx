@@ -3,32 +3,32 @@ import { Box, Grid, Text } from "@chakra-ui/react"
 import { ProductData } from "@/models/Product"
 
 export const ProductRow = ({
-  PLU,
-  Name,
-  Allergies,
-  Details,
-  Description,
-  Size,
-  Price,
+  plu,
+  name,
+  allergies,
+  details,
+  description,
+  size,
+  price,
 }: ProductData) => (
   <Grid
     templateColumns="10% 1fr 10% 10%"
     gap={2}
     className={"avoidBreakPageInside"}
   >
-    <Text>{PLU}</Text>
+    <Text>{plu}</Text>
     <Box>
-      <Text as="b">{Name}</Text>
-      {Allergies && " "}
-      <Text as="sup">{Allergies}</Text>
-      {Details && " "}
-      <Text as="i">{Details}</Text>
+      <Text as="b">{name}</Text>
+      {allergies && " "}
+      <Text as="sup">{allergies}</Text>
+      {details && " "}
+      <Text as="i">{details}</Text>
       <br />
       <Text size="sm" whiteSpace="pre-line">
-        <i>{Description}</i>
+        <i>{description}</i>
       </Text>
     </Box>
-    <Text>{Size}</Text>
-    <Text>{Price}</Text>
+    <Text>{size}</Text>
+    <Text>{price}</Text>
   </Grid>
 )

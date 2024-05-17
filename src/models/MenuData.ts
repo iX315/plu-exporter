@@ -18,7 +18,7 @@ export const getMenuData = async () => {
   if (Array.isArray(products) && Array.isArray(groups)) {
     return groups.map((group) => ({
       group,
-      products: products.filter((product) => product.Group === group.Name),
+      products: products.filter((product) => product.group === group.name),
     }))
   } else {
     return [defaultMenuData]
