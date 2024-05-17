@@ -1,6 +1,6 @@
 "use server"
 import { NextResponse } from "next/server"
-import { getMenuData } from "@/utils"
+import { getMenuData } from "@/models/MenuData"
 
 export async function GET() {
   const values = await getMenuData()
