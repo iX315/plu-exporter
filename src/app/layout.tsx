@@ -1,4 +1,3 @@
-import { ChakraProvider } from "@chakra-ui/react"
 import { ReactNode } from "react"
 
 import "@/styles/globals.css"
@@ -14,7 +13,7 @@ export default function RootLayout({ children }: Props) {
     <html>
       <body>
         <main>
-          <ChakraProvider>{children}</ChakraProvider>
+          {children}
         </main>
       </body>
     </html>

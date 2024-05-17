@@ -1,5 +1,4 @@
 "use client"
-import { Box, Text } from "@chakra-ui/react"
 import { MenuData } from "@/models/MenuData"
 import { ProductRow } from "./"
 import { MutableRefObject } from "react"
@@ -17,26 +16,26 @@ export const Item = ({
   }
 
   return (
-    <Box pb={"2em"} className={`avoidBreakPageInside ${addBreakBefore}`}>
-      <Text>{group.pre}</Text>
-      <Text as="h2" color="orange">
+    <div className={`pb-8 avoidBreakPageInside ${addBreakBefore}`}>
+      <p>{group.pre}</p>
+      <h2 className={"text-orange-500"}>
         <b>
           <i>{group.name}</i>
         </b>
-      </Text>
-      <Text as="h3" color="orange" size="13px" py={"0.2em"}>
+      </h2>
+      <h3 className={"text-orange-500 text-sm py-1"}>
         <i>{group.description}</i>
-      </Text>
-      <Box py={"1em"}>
+      </h3>
+      <div className={"py-4"}>
         {products.map((product, i) => (
           <ProductRow key={i} {...product} />
         ))}
-      </Box>
-      <Text align={"center"} size="md">
+      </div>
+      <p className="text-center text-md">
         <b>
           <i>{group.post}</i>
         </b>
-      </Text>
-    </Box>
+      </p>
+    </div>
   )
 }
