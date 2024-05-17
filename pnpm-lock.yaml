@@ -17,6 +17,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.10.4
         version: 11.11.5(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(@types/react@18.3.1)(react@18.3.1)
+      default-composer:
+        specifier: ^0.6.0
+        version: 0.6.0
       framer-motion:
         specifier: ^7.6.1
         version: 7.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1057,6 +1060,9 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+
+  default-composer@0.6.0:
+    resolution: {integrity: sha512-icLwAqlLJUAhLCPN9jBntg3B70VWWisLoayrPQThriuKCUmdj0k/UdUXmjzfHs9YT4j61EroqYsYG9nqeiGc8Q==}
 
   define-data-property@1.1.4:
     resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
@@ -3507,6 +3513,8 @@ snapshots:
       ms: 2.1.2
 
   deep-is@0.1.4: {}
+
+  default-composer@0.6.0: {}
 
   define-data-property@1.1.4:
     dependencies:
