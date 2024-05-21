@@ -1,3 +1,3 @@
-export * from './Item'
+export * from './Group'
 export * from './Main'
 export * from './ProductRow'

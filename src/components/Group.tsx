@@ -1,9 +1,9 @@
 "use client"
 import { MenuData } from "@/models/MenuData"
-import { ProductRow } from "./"
+import { ProductRow } from "."
 import { MutableRefObject } from "react"
 
-export const Item = ({
+export const Group = ({
   pageRef,
   group,
   products,
