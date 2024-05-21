@@ -1,7 +1,5 @@
 "use client"
-import { SkeletonText } from "@chakra-ui/react"
 import { useRef } from "react"
-
 import { Item } from "./"
 import { MenuData } from "@/models/MenuData"
 
@@ -16,7 +14,15 @@ export const Main = ({ data, isLoading }: MainProps) => {
   const page = useRef(1)
 
   if (isLoading) {
-    return <SkeletonText noOfLines={5} spacing={4} isLoaded={!isLoading} />
+    return (
+      <p className="gap-5">
+        <span className="w-full h-4 bg-gray-200" />
+        <span className="w-full h-4 bg-gray-200" />
+        <span className="w-full h-4 bg-gray-200" />
+        <span className="w-full h-4 bg-gray-200" />
+        <span className="w-full h-4 bg-gray-200" />
+      </p>
+    )
   }
 
   if (!data || !data.values) return <p>No data</p>

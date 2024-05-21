@@ -1,5 +1,3 @@
-import { ChakraProvider } from "@chakra-ui/react"
-
 import "@/styles/globals.css"
 
 // Since we have a `not-found.tsx` page on the root, a layout file
@@ -9,7 +7,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html>
       <body>
         <main>
-          <ChakraProvider>{children}</ChakraProvider>
+          {children}
         </main>
       </body>
     </html>
