@@ -11,7 +11,7 @@ export const ProductRow = ({
   price,
 }: ProductData) => (
   <div
-    className={"grid grid-cols-[10%_1fr_10%_10%] gap-2 avoidBreakPageInside"}
+    className={"grid grid-cols-[10%_1fr_10%_auto] sm:grid-cols-[10%_1fr_10%_10%] gap-2 avoidBreakPageInside"}
   >
     <p>{plu}</p>
     <div className={"gap-2"}>
@@ -25,7 +25,7 @@ export const ProductRow = ({
         <i>{description}</i>
       </p>
     </div>
-    <p>{size}</p>
+    <p className="text-right">{size}</p>
     <p>{price}</p>
   </div>
 )
