@@ -1,5 +1,5 @@
 "use client"
-import { MenuData } from "@/models/MenuData"
+import { Menu } from "@/models/Menu"
 import { ProductRow } from "."
 import { MutableRefObject } from "react"
 
@@ -7,7 +7,7 @@ export const Group = ({
   pageRef,
   group,
   products,
-}: MenuData & { pageRef: MutableRefObject<number> }) => {
+}: Menu & { pageRef: MutableRefObject<number> }) => {
   let addBreakBefore = ""
 
   if (group.page !== pageRef.current) {

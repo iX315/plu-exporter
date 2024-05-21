@@ -1,11 +1,11 @@
 "use client"
 import { useRef } from "react"
 import { Group } from "./"
-import { MenuData } from "@/models/MenuData"
+import { Menu } from "@/models/Menu"
 
 export interface MainProps {
   data?: {
-    values: MenuData[]
+    values: Menu[]
   }
   isLoading: boolean
 }

@@ -1,5 +1,5 @@
 "use client"
-import { ProductData } from "@/models/Product"
+import { Product } from "@/models/Product"
 
 export const ProductRow = ({
   plu,
@@ -9,7 +9,7 @@ export const ProductRow = ({
   description,
   size,
   price,
-}: ProductData) => (
+}: Product) => (
   <div
     className={"grid grid-cols-[10%_1fr_10%_auto] sm:grid-cols-[10%_1fr_10%_10%] gap-2 avoidBreakPageInside"}
   >

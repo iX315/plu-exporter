@@ -1,13 +1,13 @@
-import { GroupData, defaultGroupData, getGroupsData } from "./Group"
-import { ProductData, getProductData } from "./Product"
+import { Group, defaultGroup, getGroupsData } from "./Group"
+import { Product as Product, getProductData } from "./Product"
 
-export type MenuData = {
-  group: GroupData
-  products: ProductData[]
+export type Menu = {
+  group: Group
+  products: Product[]
 }
 
-export const defaultMenuData: MenuData = {
-  group: defaultGroupData,
+export const defaultMenu: Menu = {
+  group: defaultGroup,
   products: [],
 }
 
@@ -21,6 +21,6 @@ export const getMenuData = async () => {
       products: products.filter((product) => product.group === group.name),
     }))
   } else {
-    return [defaultMenuData]
+    return [defaultMenu]
   }
 }

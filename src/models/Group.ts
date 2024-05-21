@@ -1,6 +1,6 @@
 import { googleSheetsApiCall } from "@/utils"
 
-export type GroupData = {
+export type Group = {
   name: string
   description: string
   pre: string
@@ -8,7 +8,7 @@ export type GroupData = {
   page: number
 }
 
-export const defaultGroupData: GroupData = {
+export const defaultGroup: Group = {
   name: "",
   description: "",
   pre: "",
@@ -16,4 +16,4 @@ export const defaultGroupData: GroupData = {
   page: 0,
 }
 
-export const getGroupsData = async () => await googleSheetsApiCall<GroupData[]>({ sheetName: "Groups" })
+export const getGroupsData = async () => await googleSheetsApiCall<Group[]>({ sheetName: "Groups" })
