@@ -1,6 +1,6 @@
 import { googleSheetsApiCall } from "@/utils"
 
-export type PageData = {
+export type Page = {
   id: string
   name: string
   description: string
@@ -8,7 +8,7 @@ export type PageData = {
   logo: string
 }
 
-export const defaultPageData: PageData = {
+export const defaultPage: Page = {
   id: "",
   name: "",
   description: "",
@@ -16,4 +16,4 @@ export const defaultPageData: PageData = {
   logo: "",
 }
 
-export const getPagesData = async () => await googleSheetsApiCall<PageData[]>({ sheetName: "Pages" })
+export const getPagesData = async () => await googleSheetsApiCall<Page[]>({ sheetName: "Pages" })
