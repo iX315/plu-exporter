@@ -1,5 +1,4 @@
 "use client"
-import { Box, Grid, Text } from "@chakra-ui/react"
 import { ProductData } from "@/models/Product"
 
 export const ProductRow = ({
@@ -11,24 +10,22 @@ export const ProductRow = ({
   size,
   price,
 }: ProductData) => (
-  <Grid
-    templateColumns="10% 1fr 10% 10%"
-    gap={2}
-    className={"avoidBreakPageInside"}
+  <div
+    className={"grid grid-cols-[10%_1fr_10%_auto] sm:grid-cols-[10%_1fr_10%_10%] gap-2 avoidBreakPageInside"}
   >
-    <Text>{plu}</Text>
-    <Box>
-      <Text as="b">{name}</Text>
+    <p>{plu}</p>
+    <div className={"gap-2"}>
+      <b>{name}</b>
       {allergies && " "}
-      <Text as="sup">{allergies}</Text>
+      <sup>{allergies}</sup>
       {details && " "}
-      <Text as="i">{details}</Text>
+      <i>{details}</i>
       <br />
-      <Text size="sm" whiteSpace="pre-line">
+      <p className={"text-sm whitespace-pre-line"}>
         <i>{description}</i>
-      </Text>
-    </Box>
-    <Text>{size}</Text>
-    <Text>{price}</Text>
-  </Grid>
+      </p>
+    </div>
+    <p className="text-right">{size}</p>
+    <p>{price}</p>
+  </div>
 )
