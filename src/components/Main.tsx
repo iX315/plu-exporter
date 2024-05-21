@@ -1,6 +1,6 @@
 "use client"
 import { useRef } from "react"
-import { Item } from "./"
+import { Group } from "./"
 import { MenuData } from "@/models/MenuData"
 
 export interface MainProps {
@@ -30,7 +30,7 @@ export const Main = ({ data, isLoading }: MainProps) => {
   return (
     <>
       {data.values.map((value, i) => (
-        <Item key={i} {...value} pageRef={page} />
+        <Group key={i} {...value} pageRef={page} />
       ))}
     </>
   )
