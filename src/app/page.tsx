@@ -1,9 +1,8 @@
 import { Box, Text } from "@chakra-ui/react"
 import { getPagesData } from "@/models/Page"
-import { isDev } from "@/utils"
 import Link from "next/link"
 
-export const revalidate = isDev() ? 0 : 3600
+export const revalidate = 600
 
 export default async function Home() {
   const values = (await getPagesData()).find(({id}) => id === "Root")
