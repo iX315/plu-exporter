@@ -3,7 +3,7 @@ import { getMenuData } from "@/models/Menu"
 import { getAllergensData } from "@/models/Allergen"
 import { filterByLanguage } from "../../../utils/helpers"
 
-export default async function Preview(props: PageProps<'/preview/[lang]'>) {
+export default async function Preview(props: PageProps<'/[lang]/preview'>) {
   const {lang} = await props.params
   const values = await getMenuData(lang)
   const allergens = filterByLanguage(await getAllergensData(), lang)

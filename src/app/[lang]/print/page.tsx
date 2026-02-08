@@ -5,7 +5,7 @@ import { filterByLanguage } from "../../../utils/helpers"
 
 export const revalidate = 600
 
-export default async function Print(props: PageProps<'/preview/[lang]'>) {
+export default async function Print(props: PageProps<'/[lang]/print'>) {
   const {lang} = await props.params
   const values = await getMenuData(lang)
   const allergens = filterByLanguage(await getAllergensData(), lang)
