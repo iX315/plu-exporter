@@ -8,7 +8,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="custom-theme">
         {children}
         {process.env.NEXT_PUBLIC_CUSTOM_THEME_URL ? (
-          <link rel="stylesheet" href={process.env.NEXT_PUBLIC_CUSTOM_THEME_URL}></link>
+          <link
+            rel="stylesheet"
+            crossOrigin="anonymous"
+            href={process.env.NEXT_PUBLIC_CUSTOM_THEME_URL}
+          />
         ) : null}
       </body>
     </html>
