@@ -1,6 +1,5 @@
 "use client"
-import { Box, Grid, Text } from "@chakra-ui/react"
-import { ProductData } from "@/models/Product"
+import { Product } from "@/models/Product"
 
 export const ProductRow = ({
   plu,
@@ -10,25 +9,21 @@ export const ProductRow = ({
   description,
   size,
   price,
-}: ProductData) => (
-  <Grid
-    templateColumns="10% 1fr 10% 10%"
-    gap={2}
-    className={"avoidBreakPageInside"}
-  >
-    <Text>{plu}</Text>
-    <Box>
-      <Text as="b">{name}</Text>
+}: Product) => (
+  <div className={"product-grid"}>
+    <p className="product-plu">{plu}</p>
+    <div>
+      <span className="product-name">{name}</span>
       {allergies && " "}
-      <Text as="sup">{allergies}</Text>
+      <sup>{allergies}</sup>
       {details && " "}
-      <Text as="i">{details}</Text>
+      <span className="product-details">{details}</span>
       <br />
-      <Text size="sm" whiteSpace="pre-line">
-        <i>{description}</i>
-      </Text>
-    </Box>
-    <Text>{size}</Text>
-    <Text>{price}</Text>
-  </Grid>
+      <p className={"product-description"}>
+        {description}
+      </p>
+    </div>
+    <p className="product-size">{size}</p>
+    <p className="product-price">{price}</p>
+  </div>
 )

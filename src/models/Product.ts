@@ -1,6 +1,6 @@
 import { googleSheetsApiCall } from "@/utils"
 
-export type ProductData = {
+export type Product = {
   plu: number | null
   group: string
   name: string
@@ -9,10 +9,11 @@ export type ProductData = {
   description: string
   size: string
   price: string
-  page: number
+  page: number | null
+  language: string | null
 }
 
-export const defaultProductData: ProductData = {
+export const defaultProduct: Product = {
   plu: null,
   group: "",
   name: "",
@@ -21,7 +22,8 @@ export const defaultProductData: ProductData = {
   description: "",
   size: "",
   price: "",
-  page: 0,
+  page: null,
+  language: null
 }
 
-export const getProductData = async () => await googleSheetsApiCall<ProductData[]>({ sheetName: "Menu" })
+export const getProductData = async () => await googleSheetsApiCall<Product[]>({ sheetName: "Menu" })
