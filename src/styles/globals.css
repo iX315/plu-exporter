@@ -1,40 +1,117 @@
-html,
+@import "tailwindcss";
+@source "public/custom/";
+
+@theme {
+  --font-heading: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  --spacing-main-mobile: 20px;
+  --spacing-main-desktop: 32px;
+  --spacing-group-bottom: 32px;
+  --spacing-group-description: 4px;
+  --spacing-product-row: 16px;
+
+  /* TEXT STYLES*/
+  --text-size-group-heading: var(--text-3xl);
+  --text-size-group-heading--line-height: var(--text-3xl--line-height);
+  --text-size-group-heading--font-weight: var(--font-weight-normal);
+
+  --text-size-group-description: var(--text-sm);
+  --text-size-group-description--line-height: var(--text-sm--line-height);
+  --text-size-group-description--font-weight: var(--font-weight-normal);
+
+  --text-size-product-plu: var(--text-base);
+  --text-size-product-plu--line-height: var(--text-base--line-height);
+  --text-size-product-plu--font-weight: var(--font-weight-normal);
+
+  --text-size-product-name: var(--text-base);
+  --text-size-product-name--line-height: var(--text-base--line-height);
+  --text-size-product-name--font-weight: var(--font-weight-bold);
+
+  --text-size-product-details: var(--text-base);
+  --text-size-product-details--line-height: var(--text-base--line-height);
+  --text-size-product-details--font-weight: var(--font-weight-light);
+
+  --text-size-product-description: var(--text-base);
+  --text-size-product-description--line-height: var(--text-base--line-height);
+  --text-size-product-description--font-weight: var(--font-weight-normal);
+
+  --text-size-product-size: var(--text-base);
+  --text-size-product-size--line-height: var(--text-base--line-height);
+  --text-size-product-size--font-weight: var(--font-weight-normal);
+
+  --text-size-product-price: var(--text-base);
+  --text-size-product-price--line-height: var(--text-base--line-height);
+  --text-size-product-price--font-weight: var(--font-weight-normal);
+
+
+  /* COLORS*/
+  --color-body: var(--color-white);
+  --color-group-pre: var(--color-gray-900);
+  --color-group-heading: var(--color-orange-500);
+  --color-group-description: var(--color-orange-400);
+  --color-group-post: var(--color-gray-900);
+  --color-product-plu: var(--color-gray-800);
+  --color-product-name: var(--color-gray-950);
+  --color-product-details: var(--color-gray-800);
+  --color-product-description: var(--color-gray-900);
+  --color-product-size: var(--color-gray-900);
+  --color-product-price: var(--color-gray-900);
+}
+
+@layer components {
+  .main-content {
+    @apply p-main-mobile sm:p-main-desktop print:p-0;
+  }
+
+  .entry-group {
+    @apply pb-group-bottom print:break-inside-avoid;
+  }
+  .entry-group-pre {
+    @apply text-group-pre;
+  }
+  .entry-group-heading {
+    @apply font-heading text-group-heading text-size-group-heading;
+  }
+  .entry-group-description {
+    @apply font-heading text-group-description text-size-group-description;
+  }
+  .entry-group-post {
+    @apply text-group-post text-center;
+  }
+
+  .product-grid {
+    @apply grid grid-cols-[6%_1fr_10%_auto]
+      sm:grid-cols-[8%_1fr_10%_10%] gap-8
+      font-body
+      print:break-inside-avoid;
+  }
+
+  .product-plu {
+    @apply text-product-plu text-size-product-plu;
+  }
+
+  .product-name {
+    @apply text-product-name text-size-product-name;
+  }
+
+  .product-details {
+    @apply text-product-details text-size-product-details italic;
+  }
+
+  .product-description {
+    @apply text-product-description text-size-product-description whitespace-pre-line;
+  }
+
+  .product-size {
+    @apply text-product-size text-size-product-size text-nowrap justify-self-end;
+  }
+
+  .product-price {
+    @apply text-product-price text-size-product-price text-nowrap;
+  }
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media print {
-  .avoidBreakPageInside {
-    page-break-inside: avoid;
-  }
-
-  .breakPageBefore {
-    page-break-before: always;
-  }
-
-  .breakPageAfter {
-    page-break-after: always;
-  }
+  @apply bg-body;
 }
