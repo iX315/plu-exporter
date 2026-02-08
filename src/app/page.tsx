@@ -1,5 +1,4 @@
 import { getPagesData } from "@/models/Page"
-import { isDev } from "@/utils"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -11,13 +10,13 @@ export default async function Home() {
   if (!values) return <div>500...</div>
 
   return (
-    <div className="mr-auto lg:mr-[300px]">
+    <div className="mr-auto lg:mr-75">
       {values.image ? (
         <Image
           src={values.image}
           width={896}
           height={288}
-          className="mx-auto max-w-4xl aspect-[3/1] object-cover"
+          className="mx-auto max-w-4xl aspect-3/1 object-cover"
           alt="Cover image"
         />
       ) : null}
