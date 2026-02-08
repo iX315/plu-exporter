@@ -1,4 +1,5 @@
 export * from './Group'
 export * from './Allergens'
 export * from './Main'
+export * from './MenuLoader'
 export * from './ProductRow'

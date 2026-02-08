@@ -1,6 +1,6 @@
-import { Main, Allergens } from "@/components"
+import { Main, MenuLoader, Allergens } from "@/components"
 import { getMenuData } from "@/models/Menu"
-import { getAllergensData } from "../../models/Allergen"
+import { getAllergensData } from "@/models/Allergen"
 
 export const revalidate = 600
 
@@ -9,9 +9,9 @@ export default async function Print() {
   const allergens = await getAllergensData()
 
   return (
-    <div className={"p-6 sm:p-12"}>
-      <Main data={{values}} isLoading={!values} />
+    <Main>
+      <MenuLoader data={{values}} isLoading={!values} />
       <Allergens data={allergens} />
-    </div>
+    </Main>
   )
 }

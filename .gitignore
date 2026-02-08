@@ -37,3 +37,6 @@ next-env.d.ts
 
 # vercel temp folder
 /tmp/
+
+# do not add custom themes into main build
+/public/custom

@@ -10,22 +10,20 @@ export const ProductRow = ({
   size,
   price,
 }: Product) => (
-  <div
-    className={"grid grid-cols-[6%_1fr_10%_auto] sm:grid-cols-[8%_1fr_10%_10%] gap-8 avoidBreakPageInside"}
-  >
-    <p>{plu}</p>
-    <div className={"gap-2"}>
-      <b>{name}</b>
+  <div className={"product-grid"}>
+    <p className="product-plu">{plu}</p>
+    <div>
+      <span className="product-name">{name}</span>
       {allergies && " "}
       <sup>{allergies}</sup>
       {details && " "}
-      <i>{details}</i>
+      <span className="product-details">{details}</span>
       <br />
-      <p className={"text-sm whitespace-pre-line"}>
-        <i>{description}</i>
+      <p className={"product-description"}>
+        {description}
       </p>
     </div>
-    <p className="text-nowrap place-self-end">{size}</p>
-    <p className="text-nowrap">{price}</p>
+    <p className="product-size">{size}</p>
+    <p className="product-price">{price}</p>
   </div>
 )
