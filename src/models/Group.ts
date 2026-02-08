@@ -6,6 +6,7 @@ export type Group = {
   pre: string
   post: string
   page: number
+  language: string | null
 }
 
 export const defaultGroup: Group = {
@@ -14,6 +15,7 @@ export const defaultGroup: Group = {
   pre: "",
   post: "",
   page: 0,
+  language: null
 }
 
 export const getGroupsData = async () => await googleSheetsApiCall<Group[]>({ sheetName: "Groups" })

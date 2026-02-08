@@ -10,6 +10,7 @@ export type Product = {
   size: string
   price: string
   page: number | null
+  language: string | null
 }
 
 export const defaultProduct: Product = {
@@ -22,6 +23,7 @@ export const defaultProduct: Product = {
   size: "",
   price: "",
   page: null,
+  language: null
 }
 
 export const getProductData = async () => await googleSheetsApiCall<Product[]>({ sheetName: "Menu" })
