@@ -1,13 +1,13 @@
 "use client"
 import { Menu } from "@/models/Menu"
 import { ProductRow } from "."
-import { MutableRefObject } from "react"
+import { RefObject } from "react"
 
 export const Group = ({
   pageRef,
   group,
   products,
-}: Menu & { pageRef: MutableRefObject<number> }) => {
+}: Menu & { pageRef: RefObject<number> }) => {
   let addBreakBefore = ""
 
   if (group.page !== pageRef.current) {
@@ -16,7 +16,7 @@ export const Group = ({
   }
 
   return (
-    <div className={`entry-group ${addBreakBefore}`}>
+    <div suppressHydrationWarning className={`entry-group ${addBreakBefore}`}>
       <p className="entry-group-pre">{group.pre}</p>
       <h2 className={"entry-group-heading"}>
         {group.name}
@@ -24,7 +24,7 @@ export const Group = ({
       <h3 className={"entry-group-description"}>
         {group.description}
       </h3>
-      <div className={"py-product-row"}>
+      <div>
         {products.map((product, i) => (
           <ProductRow key={i} {...product} />
         ))}
