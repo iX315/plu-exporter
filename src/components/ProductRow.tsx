@@ -13,7 +13,7 @@ export const ProductRow = ({
   <div className={"product-grid"}>
     <p className="product-plu">{plu}</p>
     <div>
-      <span className="product-name">{name}</span>
+      {name ? <span className="product-name">{name}</span> : null}
       {allergies && " "}
       <sup>{allergies}</sup>
       {details && " "}
