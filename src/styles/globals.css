@@ -45,6 +45,7 @@
   --text-size-product-price--line-height: var(--text-base--line-height);
   --text-size-product-price--font-weight: var(--font-weight-normal);
 
+  --spacing-product-img: 2lh;
 
   /* COLORS*/
   --color-body: var(--color-white);
@@ -86,6 +87,16 @@
       sm:grid-cols-[8%_1fr_10%_10%] gap-8
       m-product-row
       print:break-inside-avoid;
+
+    div:first-child {
+      @apply flex justify-between;
+    }
+    .product-img {
+      @apply hidden md:block h-product-img w-auto mt-1;
+    }
+    .product-img-mobile {
+      @apply block md:hidden mb-3 h-product-img w-auto mt-1;
+    }
   }
 
   .product-plu {
