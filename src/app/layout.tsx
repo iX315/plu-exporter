@@ -5,7 +5,7 @@ import "@/styles/globals.css"
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html>
-      <body className="custom-theme">
+      <body>
         {children}
         {process.env.NEXT_PUBLIC_CUSTOM_THEME_URL ? (
           <link

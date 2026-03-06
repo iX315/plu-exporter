@@ -1,3 +1,4 @@
+import { GOOGLE_SHEETS_NAMES } from "../constants"
 import { googleSheetsApiCall } from "../utils"
 
 export type Allergen = {
@@ -14,4 +15,6 @@ export const defaultAllergen: Allergen = {
     language: null
 }
 
-export const getAllergensData = async () => await googleSheetsApiCall<Allergen[]>({ sheetName: "Allergens" })
+export const getAllergensData = async () => await googleSheetsApiCall<Allergen[]>({
+    sheetName: GOOGLE_SHEETS_NAMES.ALLERGENS
+})
