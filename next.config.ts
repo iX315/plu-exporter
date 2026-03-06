@@ -10,6 +10,12 @@ export default {
         port: '',
         pathname: '/photos/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'static.funwero.xyz',
+        port: '',
+        pathname: '/',
+      },
     ],
   },
 } satisfies NextConfig

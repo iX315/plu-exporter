@@ -4,6 +4,7 @@ export type Product = {
   plu: number | null
   group: string
   name: string
+  image: string
   allergies: string
   details: string
   description: string
@@ -17,6 +18,7 @@ export const defaultProduct: Product = {
   plu: null,
   group: "",
   name: "",
+  image: "",
   allergies: "",
   details: "",
   description: "",
