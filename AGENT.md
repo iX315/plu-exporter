@@ -47,6 +47,8 @@ This document provides guidelines for code agents working on this project.
 - Never commit secrets or API keys
 - Use environment variables for sensitive data
 - Follow OWASP guidelines for web security
+- **NEVER read, access, or disclose secrets or environment variables containing sensitive information**
+- **NEVER log, print, or expose credentials, API keys, or other sensitive data**
 
 ## Performance
 - Optimize images and assets
