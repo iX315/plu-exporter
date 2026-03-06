@@ -1,7 +1,7 @@
 import { Main, MenuLoader, Allergens } from "@/components"
 import { getMenuData } from "@/models/Menu"
 import { getAllergensData } from "@/models/Allergen"
-import { filterByLanguage } from "../../../utils/helpers"
+import { filterByLanguage } from "@/utils"
 
 export const revalidate = 600
 

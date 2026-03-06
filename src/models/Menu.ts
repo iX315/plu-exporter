@@ -1,4 +1,4 @@
-import { filterByLanguage } from "../utils/helpers"
+import { filterByLanguage } from "@/utils"
 import { Group, defaultGroup, getGroupsData } from "./Group"
 import { Product as Product, getProductData } from "./Product"
 
