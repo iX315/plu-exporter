@@ -21,9 +21,11 @@ export const Group = ({
       <h2 className={"entry-group-heading"}>
         {group.name}
       </h2>
-      <h3 className={"entry-group-description"}>
-        {group.description}
-      </h3>
+      {group.description ? (
+        <h3 className={"entry-group-description"}>
+          {group.description}
+        </h3>
+      ) : null}
       <div>
         {products.map((product, i) => (
           <ProductRow key={i} {...product} />

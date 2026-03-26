@@ -14,7 +14,7 @@ export const ProductRow = ({
   price,
 }: Product) => (
   <div className={"product-grid"}>
-    <div>
+    <div className="w-full">
       <p className="product-plu">{plu}</p>
       {image ? <img className={"product-img"} src={`${baseUrl}${image}`} /> : <div />}
     </div>

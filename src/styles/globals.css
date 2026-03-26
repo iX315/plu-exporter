@@ -5,6 +5,8 @@
   --font-heading: var(--font-serif);
   --font-body: var(--font-sans);
 
+  --spacing-plu: 2ch;
+
   --spacing-main-mobile: 20px;
   --spacing-main-desktop: 32px;
   --spacing-group: 0 0 32px 0;
@@ -83,8 +85,7 @@
   }
 
   .product-grid {
-    @apply grid grid-cols-[6%_1fr_10%_auto]
-      sm:grid-cols-[8%_1fr_10%_10%] gap-8
+    @apply grid grid-cols-[auto_1fr_auto_auto] gap-8
       m-product-row
       print:break-inside-avoid;
 
@@ -100,7 +101,7 @@
   }
 
   .product-plu {
-    @apply text-product-plu text-size-product-plu;
+    @apply text-product-plu text-size-product-plu w-plu text-right;
   }
 
   .product-name {
@@ -120,7 +121,7 @@
   }
 
   .product-price {
-    @apply text-product-price text-size-product-price text-nowrap;
+    @apply text-product-price text-size-product-price text-nowrap justify-self-end;
   }
 }
 
