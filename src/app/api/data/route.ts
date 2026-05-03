@@ -1,6 +1,7 @@
-"use server"
-import { NextResponse } from "next/server"
-import { getMenuData } from "@/models/Menu"
+'use server'
+import { NextResponse } from 'next/server'
+
+import { getMenuData } from '@/models/Menu'
 
 export async function GET() {
   const values = await getMenuData()

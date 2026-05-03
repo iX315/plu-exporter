@@ -1,5 +1,6 @@
-import { Allergen } from "@/models/Allergen"
-import { Fragment } from "react"
+import { Fragment } from 'react'
+
+import type { Allergen } from '@/models/Allergen'
 
 export const Allergens = ({ data }: { data: Allergen[] }) => {
   if (!data || data.length === 0) return null

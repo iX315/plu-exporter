@@ -1,37 +1,31 @@
-import { getPagesData } from "@/models/Page"
-import Link from "next/link"
+import { getHomepageData } from '@/models/Homepage'
+import { Footer, Header, Hero, Story } from '@/components'
 
 export const revalidate = 600
 
-export default async function Home(props: PageProps<'/[lang]'>) {
-  const {lang} = await props.params
-  const values = (await getPagesData()).find(({id}) => id === "Root")
+export default async function Homepage(props: PageProps<'/[lang]'>) {
+  const { lang } = await props.params
+  const values = await getHomepageData()
 
-  if (!values) return <div>500...</div>
+  if (!values) throw new Error('No homepage data found')
 
   return (
-    <div className="mr-auto lg:mr-75">
-      {values.image ? (
-        <img
-          src={values.image}
-          width={896}
-          height={288}
-          className="mx-auto max-w-4xl aspect-3/1 object-cover"
-          alt="Cover image"
+    <div className="mx-auto">
+      <Header
+        links={[
+          { href: `/${lang}/menu`, name: 'Menu' },
+          { href: `/${lang}/#contact`, name: 'Contact' }
+          // {href: `/${lang}/print`, name: "Print"},
+          // {href: `/${lang}/preview`, name: "Preview"},
+        ]}
+        {...values}
+      />
+      <main>
+        <Hero {...values} />
+        <Story
         />
-      ) : null}
-      <div className="mx-auto p-12 max-w-4xl bg-gray-300">
-        <h1 className="text-3xl">
-          {values.name}
-        </h1>
-        <h2 className="text-xl pb-2">
-          {values.description}
-        </h2>
-        <Link href={`/${lang}/print`}>
-          Menu -&gt;
-        </Link>
-        <Link href={`/${lang}/preview`} className="hidden"></Link>
-      </div>
+      </main>
+      <Footer {...values} />
     </div>
   )
 }

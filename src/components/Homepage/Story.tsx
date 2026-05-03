@@ -1,0 +1,1 @@
+export const Story = () => (<section>Story section</section>)

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react'
 
-export const Main = ({children}: PropsWithChildren) =>
+export const Main = ({ children }: PropsWithChildren) =>
   <main className="main-content">{children}</main>

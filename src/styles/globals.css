@@ -51,6 +51,10 @@
 
   /* COLORS*/
   --color-body: var(--color-white);
+  --color-primary: var(--color-orange-900);
+  --color-secondary: var(--color-gray-300);
+  --color-primary-foreground: var(--color-white);
+  --color-accent: var(--color-orange-500);
   --color-group-pre: var(--color-gray-900);
   --color-group-heading: var(--color-orange-500);
   --color-group-description: var(--color-orange-400);

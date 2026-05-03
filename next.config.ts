@@ -1,4 +1,4 @@
-import { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 export default {
   reactStrictMode: true,
@@ -8,14 +8,14 @@ export default {
         protocol: 'https',
         hostname: 'images.pexels.com',
         port: '',
-        pathname: '/photos/**',
+        pathname: '/photos/**'
       },
       {
         protocol: 'https',
         hostname: 'static.funwero.xyz',
         port: '',
-        pathname: '/',
-      },
-    ],
-  },
+        pathname: '/'
+      }
+    ]
+  }
 } satisfies NextConfig

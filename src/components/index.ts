@@ -1,3 +1,4 @@
+export * from './Homepage'
 export * from './Group'
 export * from './Allergens'
 export * from './Main'

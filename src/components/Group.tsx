@@ -1,7 +1,9 @@
 "use client"
-import { Menu } from "@/models/Menu"
-import { ProductRow } from "."
+
 import { RefObject } from "react"
+
+import { ProductRow } from "."
+import { Menu } from "@/models/Menu"
 
 export const Group = ({
   pageRef,
