@@ -3,7 +3,7 @@
 import { RefObject } from "react"
 
 import { ProductRow } from "."
-import { Menu } from "@/models/Menu"
+import type { Menu } from '@/utils'
 
 export const Group = ({
   pageRef,

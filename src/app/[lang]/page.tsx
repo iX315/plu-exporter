@@ -1,11 +1,20 @@
-import { getHomepageData } from '@/models/Homepage'
 import { Footer, Header, Hero, Story } from '@/components'
+import { db } from '@/utils/databaseProxy'
+
+import type { HomepageKeys, Homepage } from '@/generated/prisma/client'
 
 export const revalidate = 600
 
+
+export const toHomepageRecord = (entries: Homepage[]) => Object.fromEntries(
+  entries
+    .filter((e): e is Homepage & { key: string; } => e.key !== undefined)
+    .map(({ key, value }) => [key, value])
+) as { key: HomepageKeys, value: string }
+
 export default async function Homepage(props: PageProps<'/[lang]'>) {
   const { lang } = await props.params
-  const values = await getHomepageData()
+  const values = toHomepageRecord(await db('Homepage'))
 
   if (!values) throw new Error('No homepage data found')
 

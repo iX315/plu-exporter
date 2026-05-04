@@ -1,13 +1,10 @@
 import Link from 'next/link'
-
-import { getMenuData } from '@/models/Menu'
-import { getHomepageData } from '@/models/Homepage'
+import { getMenuData } from '@/utils'
 
 export const revalidate = 600
 
 export default async function MenuPage(props: PageProps<'/[lang]/menu'>) {
   const { lang } = await props.params
-  const values = await getHomepageData()
   const menuData = await getMenuData(lang)
 
   if (!menuData) return <div>No menu data available</div>
@@ -19,9 +16,16 @@ export default async function MenuPage(props: PageProps<'/[lang]/menu'>) {
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <header className="mb-8">
-          <Link href="/" className="text-2xl font-bold">
-            {values.logo ? <img src={values.logo} alt={`${values.name} logo`} className="h-12 w-auto" /> : values.name}
+          <Link
+            href={`/${lang}`}
+            className="inline-flex items-center text-orange-600 hover:text-orange-800 mb-4"
+          >
+            <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Home
           </Link>
+          <h1 className="text-3xl font-bold text-gray-900">Menu</h1>
           <p className="mt-2 text-gray-600">Browse our selection of dishes</p>
         </header>
 

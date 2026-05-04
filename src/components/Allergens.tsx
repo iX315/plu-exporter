@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import type { Allergen } from '@/models/Allergen'
+import type { Allergen } from '@/generated/prisma/client'
 
 export const Allergens = ({ data }: { data: Allergen[] }) => {
   if (!data || data.length === 0) return null

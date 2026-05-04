@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum HomepageKeys {
+  name
+  description
+  address
+  established
+  hero
+  logo
+  phone
+  email
+  instagram
+  twitter
+  youtube
+}
+
+model Homepage {
+  key HomepageKeys @unique
+  value String
+}
+
+model Group {
+  uuid String @id @default(uuid())
+  name String
+  description String
+  pre String
+  post String
+  page Int
+  language String
+}
+
+model Allergen {
+  uuid String @id @default(uuid())
+  id Int
+  name String
+  description String
+  language String
+}
+
+model Product {
+  uuid String @id @default(uuid())
+  plu Int
+  group String
+  name String
+  image String
+  allergies String
+  details String
+  description String
+  size String
+  price String
+  page Int
+  language String
+}
+
+enum OrderType {
+  ORDER
+  PROCESSING
+  SERVED
+}
+
+model Order {
+  uuid String @id @default(uuid())
+  datetime DateTime
+  type OrderType @default(ORDER)
+  plu Int
+  customer String
+}

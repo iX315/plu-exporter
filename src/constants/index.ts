@@ -6,11 +6,3 @@ export const GOOGLE_SHEETS_API = {
   DEFAULT_END_RANGE: 'Z14989',
   MAJOR_DIMENSION: 'ROWS' as const
 }
-
-export const GOOGLE_SHEETS_NAMES = {
-  HOMEPAGE: 'Homepage',
-  GROUPS: 'Groups',
-  PRODUCTS: 'Products',
-  ALLERGENS: 'Allergens',
-  LANGUAGES: 'Languages'
-}

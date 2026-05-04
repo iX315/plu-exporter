@@ -1,7 +1,8 @@
 "use client"
 import { useRef } from "react"
 import { Group } from "."
-import { Menu } from "@/models/Menu"
+
+import type { Menu } from '@/utils'
 
 export interface MainProps {
   data?: {

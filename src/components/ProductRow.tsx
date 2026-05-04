@@ -1,5 +1,6 @@
 'use client'
-import type { Product } from '@/models/Product'
+
+import type { Product } from '@/generated/prisma/client'
 
 const baseUrl = 'https://static.funwero.xyz/images/'
 

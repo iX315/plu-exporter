@@ -42,3 +42,4 @@ next-env.d.ts
 
 # do not add custom themes into main build
 /public/custom
+/src/generated/prisma
