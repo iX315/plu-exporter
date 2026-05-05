@@ -1,12 +1,11 @@
 "use client"
 import { useRef } from "react"
-import { Group } from "."
-
-import type { Menu } from '@/utils'
+import { Group as GroupComponent } from "."
+import type { Group, Product } from "@/generated/prisma/client"
 
 export interface MainProps {
   data?: {
-    values: Menu[]
+    values: (Group & {products: Product[]})[]
   }
   isLoading: boolean
 }
@@ -31,7 +30,7 @@ export const MenuLoader = ({ data, isLoading }: MainProps) => {
   return (
     <>
       {data.values.map((value, i) => (
-        <Group key={i} {...value} pageRef={page} />
+        <GroupComponent key={i} {...value} pageRef={page} />
       ))}
     </>
   )

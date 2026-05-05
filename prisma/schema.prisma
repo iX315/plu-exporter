@@ -27,41 +27,44 @@ enum HomepageKeys {
 }
 
 model Homepage {
-  key HomepageKeys @unique
+  key   HomepageKeys @unique
   value String
 }
 
 model Group {
-  uuid String @id @default(uuid())
-  name String
+  uuid        String    @id @default(uuid())
+  name        String
   description String
-  pre String
-  post String
-  page Int
-  language String
+  pre         String
+  post        String
+  page        Int
+  language    String
+  products    Product[]
 }
 
 model Allergen {
-  uuid String @id @default(uuid())
-  id Int
-  name String
+  uuid        String    @id @default(uuid())
+  id          Int
+  name        String
   description String
-  language String
+  products    Product[]
+  language    String
 }
 
 model Product {
-  uuid String @id @default(uuid())
-  plu Int
-  group String
-  name String
-  image String
-  allergies String
-  details String
+  uuid        String     @id @default(uuid())
+  plu         Int
+  group       Group?     @relation(fields: [groupId], references: [uuid])
+  groupId     String?
+  name        String
+  image       String
+  allergens   Allergen[]
+  details     String
   description String
-  size String
-  price String
-  page Int
-  language String
+  size        String
+  price       String
+  page        Int
+  language    String
 }
 
 enum OrderType {
@@ -71,9 +74,9 @@ enum OrderType {
 }
 
 model Order {
-  uuid String @id @default(uuid())
+  uuid     String    @id @default(uuid())
   datetime DateTime
-  type OrderType @default(ORDER)
-  plu Int
+  type     OrderType @default(ORDER)
+  plu      Int
   customer String
 }

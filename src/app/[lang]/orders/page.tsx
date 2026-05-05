@@ -1,13 +1,13 @@
 import Link from "next/link"
 
 import type { Order } from "@/generated/prisma/client"
-import { db } from "@/utils/databaseProxy"
+import { dbClient } from '@/utils/dbClient'
 
 export const revalidate = 60
 
 export default async function OrdersPage(props: PageProps<'/[lang]/orders'>) {
   const { lang } = await props.params
-  const orders = await db('Order')
+  const orders = await dbClient.order.findMany()
 
   if (!orders || orders.length === 0) {
     return (

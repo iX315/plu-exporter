@@ -1,16 +1,16 @@
 import Link from 'next/link'
-import { getMenuData } from '@/utils'
+import { dbClient } from '@/utils/dbClient'
 
 export const revalidate = 600
 
 export default async function MenuPage(props: PageProps<'/[lang]/menu'>) {
   const { lang } = await props.params
-  const menuData = await getMenuData(lang)
+  const groupWithProducts = await dbClient.group.findMany({ where: { language: lang }, include: { products: true } })
 
-  if (!menuData) return <div>No menu data available</div>
+  if (!groupWithProducts) return <div>No menu data available</div>
 
   // Get unique group names for tabs
-  const tabNames = menuData.map((menu) => menu.group.name)
+  const tabNames = groupWithProducts.map(({ name }) => name)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -69,23 +69,23 @@ export default async function MenuPage(props: PageProps<'/[lang]/menu'>) {
 
         {/* Menu Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {menuData.map((menu, menuIndex) => (
+          {groupWithProducts.map(({ name, pre, description, products, post, uuid }) => (
             <section
-              key={menuIndex}
-              id={menu.group.name.toLowerCase().replace(/\s+/g, '-')}
+              key={uuid}
+              id={name.toLowerCase().replace(/\s+/g, '-')}
               className="space-y-6"
             >
-              {menu.group.pre && (
-                <p className="text-sm text-gray-500">{menu.group.pre}</p>
+              {pre && (
+                <p className="text-sm text-gray-500">{pre}</p>
               )}
               <h2 className="text-2xl font-bold text-orange-600">
-                {menu.group.name}
+                {name}
               </h2>
-              {menu.group.description && (
-                <p className="text-gray-600">{menu.group.description}</p>
+              {description && (
+                <p className="text-gray-600">{description}</p>
               )}
               <div className="grid gap-6">
-                {menu.products.map((product) => (
+                {products.map((product) => (
                   <div
                     key={product.plu || product.name}
                     className="group relative aspect-[4/5] overflow-hidden rounded-lg"
@@ -132,8 +132,8 @@ export default async function MenuPage(props: PageProps<'/[lang]/menu'>) {
                 ))}
               </div>
 
-              {menu.group.post && (
-                <p className="text-sm text-gray-500">{menu.group.post}</p>
+              {post && (
+                <p className="text-sm text-gray-500">{post}</p>
               )}
             </section>
           ))}

@@ -38,10 +38,9 @@ CREATE TABLE "Allergen" (
 CREATE TABLE "Product" (
     "uuid" TEXT NOT NULL,
     "plu" INTEGER NOT NULL,
-    "group" TEXT NOT NULL,
+    "groupId" TEXT,
     "name" TEXT NOT NULL,
     "image" TEXT NOT NULL,
-    "allergies" TEXT NOT NULL,
     "details" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "size" TEXT NOT NULL,
@@ -63,5 +62,25 @@ CREATE TABLE "Order" (
     CONSTRAINT "Order_pkey" PRIMARY KEY ("uuid")
 );
 
+-- CreateTable
+CREATE TABLE "_AllergenToProduct" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL,
+
+    CONSTRAINT "_AllergenToProduct_AB_pkey" PRIMARY KEY ("A","B")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Homepage_key_key" ON "Homepage"("key");
+
+-- CreateIndex
+CREATE INDEX "_AllergenToProduct_B_index" ON "_AllergenToProduct"("B");
+
+-- AddForeignKey
+ALTER TABLE "Product" ADD CONSTRAINT "Product_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES "Group"("uuid") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_AllergenToProduct" ADD CONSTRAINT "_AllergenToProduct_A_fkey" FOREIGN KEY ("A") REFERENCES "Allergen"("uuid") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_AllergenToProduct" ADD CONSTRAINT "_AllergenToProduct_B_fkey" FOREIGN KEY ("B") REFERENCES "Product"("uuid") ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Product } from '@/generated/prisma/client'
+import type { Product, Allergen } from '@/generated/prisma/client'
 
 const baseUrl = 'https://static.funwero.xyz/images/'
 
@@ -8,12 +8,12 @@ export const ProductRow = ({
   plu,
   name,
   image,
-  allergies,
+  allergens,
   details,
   description,
   size,
   price
-}: Product) => (
+}: Product & { allergens?: Allergen[] }) => (
   <div className={'product-grid'}>
     <div className="w-full">
       <p className="product-plu">{plu}</p>
@@ -21,8 +21,8 @@ export const ProductRow = ({
     </div>
     <div>
       {name ? <span className="product-name">{name}</span> : null}
-      {allergies && ' '}
-      {allergies ? <sup>{allergies}</sup> : null}
+      {allergens && ' '}
+      {allergens ? <sup>{allergens.map(a => a.name).join(', ')}</sup> : null}
       {details && ' '}
       {details ? <span className="product-details">{details}</span> : null}
       {name ? <br /> : null}

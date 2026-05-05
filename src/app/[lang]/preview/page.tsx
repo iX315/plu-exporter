@@ -1,13 +1,11 @@
 import { Main, MenuLoader, Allergens } from '@/components'
-import { getMenuData } from '@/utils'
 
-
-import { db } from '@/utils/databaseProxy'
+import { dbClient } from '@/utils/dbClient'
 
 export default async function Preview(props: PageProps<'/[lang]/preview'>) {
   const { lang } = await props.params
-  const values = await getMenuData(lang)
-  const allergens = await db('Allergen', { where: { language: lang } })
+  const values = await dbClient.group.findMany({ where: { language: lang }, include: { products: true } })
+  const allergens = await dbClient.allergen.findMany({ where: { language: lang } })
 
   return (
     <Main>

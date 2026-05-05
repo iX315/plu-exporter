@@ -76,8 +76,8 @@ export const Footer = ({ name, description, links, address, phone, email, twitte
       <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
         <p className="text-xs opacity-50">© {new Date().getFullYear()} {name}. All rights reserved.</p>
         <div className="flex gap-6">
-          <a className="text-xs opacity-50 transition-opacity hover:opacity-100" href="/contact">Privacy Policy</a>
-          <a className="text-xs opacity-50 transition-opacity hover:opacity-100" href="/contact">Terms of Service</a>
+          <Link className="text-xs opacity-50 transition-opacity hover:opacity-100" href="/contact">Privacy Policy</Link>
+          <Link className="text-xs opacity-50 transition-opacity hover:opacity-100" href="/contact">Terms of Service</Link>
         </div>
       </div>
     </div>

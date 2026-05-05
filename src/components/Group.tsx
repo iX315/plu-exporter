@@ -3,29 +3,38 @@
 import { RefObject } from "react"
 
 import { ProductRow } from "."
-import type { Menu } from '@/utils'
+import type { Group as GroupType, Product } from "@/generated/prisma/client"
+
+type GroupProps = GroupType & {
+  pageRef: RefObject<number>
+  products: Product[]
+}
 
 export const Group = ({
   pageRef,
-  group,
+  pre,
+  name,
+  description,
+  post,
+  page,
   products,
-}: Menu & { pageRef: RefObject<number> }) => {
+}: GroupProps) => {
   let addBreakBefore = ""
 
-  if (group.page !== pageRef.current) {
-    pageRef.current = group.page
+  if (page !== pageRef.current) {
+    pageRef.current = page
     addBreakBefore = "print:break-before-page"
   }
 
   return (
     <div suppressHydrationWarning className={`entry-group ${addBreakBefore}`}>
-      <p className="entry-group-pre">{group.pre}</p>
+      <p className="entry-group-pre">{pre}</p>
       <h2 className={"entry-group-heading"}>
-        {group.name}
+        {name}
       </h2>
-      {group.description ? (
+      {description ? (
         <h3 className={"entry-group-description"}>
-          {group.description}
+          {description}
         </h3>
       ) : null}
       <div>
@@ -34,7 +43,7 @@ export const Group = ({
         ))}
       </div>
       <p className="entry-group-post">
-        {group.post}
+        {post}
       </p>
     </div>
   )
