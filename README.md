@@ -146,6 +146,10 @@ Returns menu data in JSON format.
 }
 ```
 
+### `/api/mcp` (MCP Streamable HTTP)
+
+Exposes a single `get_menu` MCP tool returning the same data as `/api/data`, for use by MCP-compatible clients (e.g. Claude, other agents). Optionally accepts a `language` argument.
+
 ## Customization
 
 ### Theming
