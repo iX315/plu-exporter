@@ -129,6 +129,20 @@ interface Product {
 - `200 OK`: Success
 - `500 Internal Server Error`: Error fetching data from Google Sheets
 
+### MCP `/mcp` (Model Context Protocol)
+
+Exposes the same menu data over MCP Streamable HTTP for LLM/agent clients.
+
+**Transport:** Streamable HTTP (stateless, no sessions)
+
+**Tool:** `get_menu`
+
+**Input:** `{ language?: string }` — optional language code to filter results, same semantics as `getMenuData(lang)`.
+
+**Output:** Tool `content` is a single `text` block containing the same JSON shape as `/api/data`: `{ "values": Menu[] }`.
+
+**Authentication:** None (matches `/api/data`).
+
 ## Error Handling
 
 The API follows standard HTTP status codes:
